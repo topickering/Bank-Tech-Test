@@ -16,6 +16,8 @@ class Account
     update_balance(amount)
   end
 
+private
+
   def transaction(amount)
     @transactions.push(Transaction.new(amount))
   end
