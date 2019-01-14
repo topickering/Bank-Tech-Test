@@ -11,4 +11,17 @@ class Account
     @transactions = []
   end
 
+  def deposit(amount)
+    transaction(amount)
+    update_balance(amount)
+  end
+
+  def transaction(amount)
+    @transactions.push(Transaction.new(amount))
+  end
+
+  def update_balance(amount)
+    @balance += amount
+  end
+
 end
