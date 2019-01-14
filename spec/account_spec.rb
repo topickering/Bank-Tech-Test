@@ -6,4 +6,8 @@ describe Account do
     expect(subject.balance).to eq 0
   end
 
+  it 'initializes with an array for transactions' do
+    expect(subject.transactions.is_a? Array).to be true
+  end
+
 end
