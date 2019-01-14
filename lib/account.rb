@@ -16,6 +16,11 @@ class Account
     update_balance(amount)
   end
 
+  def withdraw(amount)
+    fail "Cannot withdraw more than available balance" if exceeds_balance?(amount)
+    deposit(-amount)
+  end
+
 private
 
   def transaction(amount)
@@ -24,6 +29,10 @@ private
 
   def update_balance(amount)
     @balance += amount
+  end
+
+  def exceeds_balance?(amount)
+    amount > @balance
   end
 
 end

@@ -13,11 +13,25 @@ describe Account do
   describe '#deposit' do
     it 'adds a transaction to the transactions array' do
       subject.deposit(10)
-      expect(subject.transactions.length).to eq 1
+      expect(subject.transactions[0]).to be_a Transaction
     end
     it 'increases the balance by an amount' do
+      expect {subject.deposit(10)}.to change{ subject.balance }.by 10
+    end
+  end
+
+  describe '#withdraw' do
+    it 'adds a transaction to the transactions array' do
       subject.deposit(10)
-      expect(subject.balance).to eq 10
+      subject.withdraw(10)
+      expect(subject.transactions[1]).to be_a Transaction
+    end
+    it 'reduces the balance by an amount' do
+      subject.deposit(10)
+      expect {subject.withdraw(10)}.to change{ subject.balance }.by -10
+    end
+    it 'throws an error if the withdrawal amount exceedsd the balance' do
+      expect { subject.withdraw(1) }.to raise_error "Cannot withdraw more than available balance"
     end
   end
 
