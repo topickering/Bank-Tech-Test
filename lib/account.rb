@@ -18,13 +18,23 @@ class Account
 
   def withdraw(amount)
     fail "Cannot withdraw more than available balance" if exceeds_balance?(amount)
+
     deposit(-amount)
+  end
+
+  def print_statement
+    running_balance = @balance
+    p 'date || credit || debit || balance'
+    @transactions.each do |t|
+      p t.transaction_print + "|| #{running_balance}"
+      running_balance -= t.amount
+    end
   end
 
 private
 
   def transaction(amount)
-    @transactions.push(Transaction.new(amount))
+    @transactions.unshift(Transaction.new(amount))
   end
 
   def update_balance(amount)
