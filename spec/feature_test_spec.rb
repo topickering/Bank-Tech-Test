@@ -28,7 +28,7 @@ describe Account do
   describe '#deposit' do
     it 'increases the balance by an amount' do
       account.deposit(150)
-      expect { account.balance }.to output(150).to_stdout
+      expect(account.balance).to eq(150)
     end
   end
 
@@ -36,7 +36,7 @@ describe Account do
     it 'increases the balance by an amount' do
       account.deposit(150)
       account.withdraw(100)
-      expect { account.balance }.to output(50).to_stdout
+      expect(account.balance).to eq(50)
     end
   end
 

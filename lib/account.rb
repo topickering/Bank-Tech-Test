@@ -17,7 +17,7 @@ class Account
 
   def deposit(amount)
     transaction(amount)
-    update_balance
+    update_balance(amount)
   end
 
   def withdraw(amount)
