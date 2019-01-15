@@ -48,3 +48,19 @@ See your transaction history:
 ```
 account.print_statement
 ```
+
+## Running tests
+
+Make sure dependencies are installed, then run rspec from the command line:
+```
+rspec
+```
+
+## Approach
+
+The app has four classes:
+
+- Account: this class stores a balance and transactions, and is the controller class.
+- Transaction: this class stores transaction amounts and dates.
+- TransactionFormatter: this class formats transactions for a statement print-out.
+- Statement: this class prints out a formatted history of transactions for an account.
