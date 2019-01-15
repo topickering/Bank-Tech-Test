@@ -19,7 +19,7 @@ class Account
   end
 
   def withdraw(amount)
-    fail "Cannot withdraw more than available balance" if exceeds_balance?(amount)
+    fail "Insufficient funds" if exceeds_balance?(amount)
 
     deposit(-amount)
   end

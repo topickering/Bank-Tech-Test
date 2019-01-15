@@ -5,9 +5,9 @@ class Statement
 
   attr_reader :account, :header
 
-  DEFAULT_HEADER = 'date || credit || debit || balance'
+  HEADER = 'date || credit || debit || balance'
 
-  def initialize(account, header = DEFAULT_HEADER, formatter = TransactionFormatter)
+  def initialize(account, header = HEADER, formatter = TransactionFormatter)
     @account = account
     @header = header
     @formatter = formatter

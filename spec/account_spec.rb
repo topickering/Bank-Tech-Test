@@ -28,10 +28,10 @@ describe Account do
     end
     it 'reduces the balance by an amount' do
       subject.deposit(10)
-      expect { subject.withdraw(10) }.to change { subject.balance }.by -10
+      expect { subject.withdraw(10) }.to change { subject.balance }.by(-10)
     end
     it 'throws an error if the withdrawal amount exceeds the balance' do
-      expect { subject.withdraw(1) }.to raise_error "Cannot withdraw more than available balance"
+      expect { subject.withdraw(1) }.to raise_error "Insufficient funds"
     end
   end
 

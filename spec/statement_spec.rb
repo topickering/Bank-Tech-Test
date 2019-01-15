@@ -8,7 +8,7 @@ describe Statement do
   let(:subject) { Statement.new(account) }
 
   it 'opens with a default header' do
-    expect(subject.header).to eq Statement::DEFAULT_HEADER
+    expect(subject.header).to eq Statement::HEADER
   end
 
   describe '#print' do
