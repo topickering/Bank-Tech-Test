@@ -7,12 +7,6 @@ require 'timecop'
 describe Account do
 
   let(:account) { Account.new }
-  let(:deposit) { double("Transaction", amount: 10, time: time) }
-  let(:deposit) { double("Transaction", amount: 10, time: time) }
-
-  before do
-    Timecop.freeze(Time.local(2019, 1, 18))
-  end
 
   describe '#print_statement' do
     it 'prints an empty statement if there have been no deposits or withdrawals' do

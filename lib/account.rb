@@ -7,8 +7,8 @@ class Account
 
   DEFAULT_BALANCE = 0
 
-  def initialize(balance = DEFAULT_BALANCE, statement = Statement,
-    transaction = Transaction)
+  def initialize(statement = Statement, transaction = Transaction,
+    balance = DEFAULT_BALANCE)
     @balance = balance
     @transactions = []
     @statement = statement

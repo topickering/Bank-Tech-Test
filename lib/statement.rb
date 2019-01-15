@@ -5,7 +5,7 @@ class Statement
 
   HEADER = 'date || credit || debit || balance'
 
-  def initialize(account, header = HEADER, formatter = TransactionFormatter)
+  def initialize(account, formatter = TransactionFormatter, header = HEADER)
     @account = account
     @header = header
     @formatter = formatter
