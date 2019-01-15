@@ -50,7 +50,7 @@ describe Account do
 
   describe '#print_statement' do
     it 'is a method to which account will respond' do
-      allow(statement).to receive(:print) {'Test Statement'}
+      allow(statement).to receive(:print) { 'Test Statement' }
       expect(subject).to respond_to(:print_statement)
     end
   end
