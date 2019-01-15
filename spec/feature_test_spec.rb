@@ -19,25 +19,26 @@ describe Account do
       expect { account.print_statement }.to output("\"date || credit || debit || balance\"\n").to_stdout
     end
     it 'prints a statement with any deposits or withdrawals in reverse chronological order' do
-      account.deposit(150)
-      account.withdraw(100)
-      expect { account.print_statement }.to output("\"date || credit || debit || balance\"\n\"18/1/2019 ||  ||  100.00|| 50.00\"\n\"18/1/2019 || 150.00 || || 150.00\"\n").to_stdout
+      first_deposit
+      second_deposit
+      test_withdrawal
+      expect { account.print_statement }.to output("\"date || credit || debit || balance\"\n\"14/1/2012 ||  ||  500.00|| 2500.00\"\n\"13/1/2012 || 2000.00 || || 3000.00\"\n\"10/1/2012 || 1000.00 || || 1000.00\"\n").to_stdout
     end
   end
 
-  describe '#deposit' do
-    it 'increases the balance by an amount' do
-      account.deposit(150)
-      expect(account.balance).to eq(150)
-    end
+  def first_deposit
+    Timecop.freeze(Time.local(2012, 01, 10))
+    account.deposit(1000)
   end
 
-  describe '#withdrawal' do
-    it 'increases the balance by an amount' do
-      account.deposit(150)
-      account.withdraw(100)
-      expect(account.balance).to eq(50)
-    end
+  def second_deposit
+    Timecop.freeze(Time.local(2012, 01, 13))
+    account.deposit(2000)
+  end
+
+  def test_withdrawal
+    Timecop.freeze(Time.local(2012, 01, 14))
+    account.withdraw(500)
   end
 
 end
