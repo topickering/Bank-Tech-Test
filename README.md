@@ -15,7 +15,7 @@ The app uses the following gems:
 - simple-cov to assess test coverage,
 - rubocop for linting.
 
-Run
+Having cloned the repository and switched into the project directory from the command line, run
 ```
 bundle install
 ```
@@ -23,7 +23,17 @@ in order to install these gems.
 
 ## Using the app
 
-Create an account via the command line:
+Once the repository has been cloned and gems installed, open an REPL environment, for example IRB:
+```
+irb
+```
+
+Load the app:
+```
+load 'lib/account.rb'
+```
+
+Now you can create an account via the command line:
 ```
 account = Account.new
 ```
@@ -55,6 +65,18 @@ Make sure dependencies are installed, then run rspec from the command line:
 ```
 rspec
 ```
+(For more information, visit http://rspec.info/.)
+
+## Running the linter
+
+Make sure dependencies are installed, then run rubocop from the command line:
+```
+rubocop
+```
+
+The linter can also be customised via the .rubocop.yml file.
+
+(For more information, visit https://github.com/rubocop-hq/rubocop.)
 
 ## Approach
 
