@@ -12,6 +12,7 @@ Fork this repository, and then clone into either an existing or new directory vi
 
 The app uses the following gems:
 - rspec for testing,
+- timecop to help account for time in tests,
 - simple-cov to assess test coverage,
 - rubocop for linting.
 

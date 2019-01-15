@@ -3,8 +3,6 @@ require_relative 'transaction_formatter'
 
 class Statement
 
-  attr_reader :account, :header
-
   HEADER = 'date || credit || debit || balance'
 
   def initialize(account, header = HEADER, formatter = TransactionFormatter)

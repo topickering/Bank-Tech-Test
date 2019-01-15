@@ -2,8 +2,6 @@ require_relative 'transaction'
 
 class TransactionFormatter
 
-  attr_reader :transaction
-
   def initialize(transaction)
     @transaction = transaction
   end
@@ -11,6 +9,8 @@ class TransactionFormatter
   def transaction_print
     "#{time_formatter}" + "#{amount_formatter}"
   end
+
+private
 
   def time_formatter
     time = @transaction.time

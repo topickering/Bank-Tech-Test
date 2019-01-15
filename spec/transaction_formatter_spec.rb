@@ -8,24 +8,12 @@ describe TransactionFormatter do
   let(:deposit_formatter) { TransactionFormatter.new(deposit) }
   let(:withdrawal_formatter) { TransactionFormatter.new(withdrawal) }
 
-  describe '#time_formatter' do
-    it 'formats @time into a standard date format' do
-      expect(deposit_formatter.time_formatter).to eq "18/1/2019 ||"
-    end
-  end
-
-  describe '#amount_formatter' do
-    it 'formats a positive @amount into a standard format' do
-      expect(deposit_formatter.amount_formatter).to eq " 10.00 || "
-    end
-    it 'formats a negataive @amount into a standard format' do
-      expect(withdrawal_formatter.amount_formatter).to eq "  ||  10.00"
-    end
-  end
-
   describe '#transaction_print' do
-    it 'returns a string with formatted transaction info' do
+    it 'returns a string with formatted transaction info (deposit test)' do
       expect(deposit_formatter.transaction_print).to eq "18/1/2019 || 10.00 || "
+    end
+    it 'returns a string with formatted transaction info (withdrawal test)' do
+      expect(withdrawal_formatter.transaction_print).to eq "18/1/2019 ||  ||  10.00"
     end
   end
 

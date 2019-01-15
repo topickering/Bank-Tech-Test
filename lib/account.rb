@@ -3,19 +3,21 @@ require_relative 'statement'
 
 class Account
 
-  attr_reader :balance, :transactions, :statement
+  attr_reader :balance, :transactions
 
   DEFAULT_BALANCE = 0
 
-  def initialize(balance = DEFAULT_BALANCE, statement = Statement)
+  def initialize(balance = DEFAULT_BALANCE, statement = Statement,
+    transaction = Transaction)
     @balance = balance
     @transactions = []
     @statement = statement
+    @transaction = transaction
   end
 
   def deposit(amount)
     transaction(amount)
-    update_balance(amount)
+    update_balance
   end
 
   def withdraw(amount)
@@ -32,7 +34,7 @@ class Account
 private
 
   def transaction(amount)
-    @transactions.unshift(Transaction.new(amount))
+    @transactions.unshift(@transaction.new(amount))
   end
 
   def update_balance(amount)
