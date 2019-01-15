@@ -1,14 +1,16 @@
 require_relative 'transaction'
+require_relative 'statement'
 
 class Account
 
-  attr_reader :balance, :transactions
+  attr_reader :balance, :transactions, :statement
 
   DEFAULT_BALANCE = 0
 
-  def initialize(balance = DEFAULT_BALANCE)
+  def initialize(balance = DEFAULT_BALANCE, statement = Statement)
     @balance = balance
     @transactions = []
+    @statement = statement
   end
 
   def deposit(amount)
@@ -23,12 +25,8 @@ class Account
   end
 
   def print_statement
-    running_balance = @balance
-    p 'date || credit || debit || balance'
-    @transactions.each do |t|
-      p t.transaction_print + "|| #{running_balance}"
-      running_balance -= t.amount
-    end
+    statement = @statement.new(self)
+    statement.print
   end
 
 private

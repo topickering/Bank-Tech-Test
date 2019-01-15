@@ -20,10 +20,17 @@ class TransactionFormatter
   def amount_formatter
     amount = @transaction.amount
     if amount < 0
-      "  ||  #{-amount}"
+      "  ||  #{amount_decimal(amount)}"
     else
-      " #{amount} || "
+      " #{amount_decimal(amount)} || "
     end
+  end
+
+  def amount_decimal(amount)
+    if amount < 0
+      amount = -amount
+    end
+    '%.2f' % amount
   end
 
 end
