@@ -9,14 +9,6 @@ describe Account do
   let(:statement) { double("Statement") }
   let(:subject) { Account.new(statement, transaction) }
 
-  it 'opens with a balance of zero' do
-    expect(subject.balance).to eq 0
-  end
-
-  it 'initializes with an array for transactions' do
-    expect(subject.transactions.is_a? Array).to be true
-  end
-
   describe '#deposit' do
     it 'adds a transaction to the transactions array' do
       allow(transaction).to receive(:new) { test_deposit }
@@ -45,13 +37,6 @@ describe Account do
     end
     it 'throws an error if the withdrawal amount exceeds the balance' do
       expect { subject.withdraw(1) }.to raise_error "Insufficient funds"
-    end
-  end
-
-  describe '#print_statement' do
-    it 'is a method to which account will respond' do
-      allow(statement).to receive(:print) { 'Test Statement' }
-      expect(subject).to respond_to(:print_statement)
     end
   end
 
